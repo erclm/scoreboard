@@ -2,6 +2,8 @@
 
 A retro arcade-styled scoreboard webapp designed for team games, optimized for widescreen projector display. Built with React and TypeScript, this application provides comprehensive scoring and league management features with a distinctive retro aesthetic.
 
+![Scoreboard Dashboard](./screenshot.png)
+
 ## Features
 
 ### 🎮 Main Dashboard
