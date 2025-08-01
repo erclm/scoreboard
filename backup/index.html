@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scoreboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Main Dashboard -->
+        <div id="main-dashboard" class="screen active">
+            <header class="header">
+                <h1>SCOREBOARD</h1>
+                <div class="mode-selector">
+                    <button class="mode-btn active" data-mode="dashboard">Dashboard</button>
+                    <button class="mode-btn" data-mode="league">League</button>
+                    <button class="mode-btn" data-mode="tournament">Tournament</button>
+                </div>
+            </header>
+
+            <div class="scoreboard-container">
+                <div class="teams-grid" id="teams-grid">
+                    <!-- Teams will be dynamically added here -->
+                </div>
+                
+                <div class="operator-panel">
+                    <h3>Operator Controls</h3>
+                    <div class="team-setup">
+                        <input type="text" id="team-name-input" placeholder="Team Name">
+                        <button id="add-team-btn">Add Team</button>
+                    </div>
+                    <div class="point-controls">
+                        <select id="team-selector">
+                            <option value="">Select Team</option>
+                        </select>
+                        <div class="point-buttons">
+                            <button class="point-btn" data-action="add" data-value="1">+1</button>
+                            <button class="point-btn" data-action="add" data-value="5">+5</button>
+                            <button class="point-btn" data-action="add" data-value="10">+10</button>
+                            <button class="point-btn" data-action="subtract" data-value="1">-1</button>
+                            <button class="point-btn" data-action="subtract" data-value="5">-5</button>
+                            <button class="point-btn" data-action="subtract" data-value="10">-10</button>
+                        </div>
+                        <div class="set-points">
+                            <input type="number" id="set-points-input" placeholder="Set points">
+                            <button id="set-points-btn">Set</button>
+                        </div>
+                    </div>
+                    <button id="reset-scores-btn" class="danger-btn">Reset All Scores</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- League Format -->
+        <div id="league-format" class="screen">
+            <header class="header">
+                <h1>LEAGUE FORMAT</h1>
+                <div class="league-info">
+                    <span id="current-round">Round 1</span>
+                    <span id="games-remaining">Games Remaining: 36</span>
+                </div>
+            </header>
+
+            <div class="league-container">
+                <div class="standings-panel">
+                    <h3>Standings</h3>
+                    <div class="standings-table">
+                        <div class="standings-header">
+                            <span>Team</span>
+                            <span>W</span>
+                            <span>L</span>
+                            <span>D</span>
+                            <span>Pts</span>
+                        </div>
+                        <div id="standings-list">
+                            <!-- Standings will be populated here -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="current-games-panel">
+                    <h3>Current Games</h3>
+                    <div id="current-games">
+                        <!-- Current games will be shown here -->
+                    </div>
+                    <button id="next-round-btn" class="primary-btn">Next Round</button>
+                </div>
+
+                <div class="league-operator-panel">
+                    <h3>Game Results</h3>
+                    <div id="game-results-inputs">
+                        <!-- Game result inputs will be added here -->
+                    </div>
+                    <button id="start-league-btn" class="primary-btn">Start League</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tournament Format -->
+        <div id="tournament-format" class="screen">
+            <header class="header">
+                <h1>TOURNAMENT</h1>
+                <div id="tournament-stage">Semifinals</div>
+            </header>
+
+            <div class="tournament-container">
+                <div class="bracket">
+                    <div class="tournament-round" id="semifinals">
+                        <h3>Semifinals</h3>
+                        <div class="tournament-games">
+                            <!-- Semifinal games -->
+                        </div>
+                    </div>
+                    <div class="tournament-round" id="finals">
+                        <h3>Finals</h3>
+                        <div class="tournament-games">
+                            <!-- Final game -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tournament-operator-panel">
+                    <h3>Tournament Controls</h3>
+                    <div id="tournament-controls">
+                        <!-- Tournament controls will be added here -->
+                    </div>
+                    <button id="start-tournament-btn" class="primary-btn">Start Tournament</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Score Page -->
+        <div id="final-score" class="screen">
+            <header class="header">
+                <h1>FINAL RESULTS</h1>
+            </header>
+
+            <div class="final-results-container">
+                <div class="final-standings">
+                    <h2>Final Standings</h2>
+                    <div id="final-standings-list">
+                        <!-- Final standings will be displayed here -->
+                    </div>
+                </div>
+
+                <div class="game-history">
+                    <h2>Game Results</h2>
+                    <div id="game-history-list">
+                        <!-- Game history will be displayed here -->
+                    </div>
+                </div>
+
+                <button id="back-to-main-btn" class="primary-btn">Back to Main</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

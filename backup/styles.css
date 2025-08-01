@@ -1,0 +1,558 @@
+/* Modern Retro Pixel Art Styling */
+:root {
+    --primary-color: #00ff41;
+    --secondary-color: #ff0080;
+    --accent-color: #ffff00;
+    --bg-color: #0a0a0a;
+    --panel-color: #1a1a1a;
+    --border-color: #333;
+    --text-color: #ffffff;
+    --danger-color: #ff4444;
+    --success-color: #44ff44;
+    --warning-color: #ffaa44;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Orbitron', monospace;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow: hidden;
+    height: 100vh;
+}
+
+#app {
+    height: 100vh;
+    position: relative;
+}
+
+.screen {
+    display: none;
+    height: 100vh;
+    padding: 20px;
+    background: linear-gradient(45deg, var(--bg-color), #111);
+}
+
+.screen.active {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 3px solid var(--primary-color);
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--primary-color);
+    text-shadow: 0 0 20px var(--primary-color);
+    letter-spacing: 0.2em;
+}
+
+.mode-selector {
+    display: flex;
+    gap: 10px;
+}
+
+.mode-btn {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    background: var(--panel-color);
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.mode-btn:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px var(--primary-color);
+}
+
+.mode-btn.active {
+    background: var(--primary-color);
+    color: var(--bg-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px var(--primary-color);
+}
+
+/* Main Dashboard */
+.scoreboard-container {
+    display: flex;
+    flex: 1;
+    gap: 30px;
+}
+
+.teams-grid {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.team-card {
+    background: var(--panel-color);
+    border: 3px solid var(--border-color);
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.team-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+}
+
+.team-card.rank-1 {
+    border-color: var(--accent-color);
+    background: linear-gradient(135deg, var(--panel-color), rgba(255, 255, 0, 0.1));
+}
+
+.team-card.rank-2 {
+    border-color: var(--text-color);
+    background: linear-gradient(135deg, var(--panel-color), rgba(255, 255, 255, 0.1));
+}
+
+.team-card.rank-3 {
+    border-color: var(--warning-color);
+    background: linear-gradient(135deg, var(--panel-color), rgba(255, 170, 68, 0.1));
+}
+
+.team-name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    text-transform: uppercase;
+}
+
+.team-score {
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--accent-color);
+    text-shadow: 0 0 15px var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.team-rank {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.remove-team-btn {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    background: var(--danger-color);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-family: 'Orbitron', monospace;
+}
+
+/* Operator Panel */
+.operator-panel {
+    flex: 1;
+    background: var(--panel-color);
+    border: 3px solid var(--border-color);
+    padding: 30px;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.operator-panel h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.team-setup {
+    margin-bottom: 30px;
+}
+
+.team-setup input,
+.set-points input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-family: 'Orbitron', monospace;
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+    margin-bottom: 15px;
+}
+
+.team-setup input:focus,
+.set-points input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+}
+
+button {
+    padding: 15px 25px;
+    font-size: 1rem;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    background: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+button:hover {
+    box-shadow: 0 0 15px var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.primary-btn {
+    background: var(--primary-color);
+    color: var(--bg-color);
+}
+
+.danger-btn {
+    background: var(--danger-color);
+    color: white;
+}
+
+.point-controls {
+    margin-bottom: 30px;
+}
+
+#team-selector {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    font-family: 'Orbitron', monospace;
+    background: var(--bg-color);
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+    margin-bottom: 20px;
+}
+
+.point-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.point-btn {
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.point-btn[data-action="add"] {
+    background: var(--success-color);
+}
+
+.point-btn[data-action="subtract"] {
+    background: var(--danger-color);
+}
+
+.set-points {
+    display: flex;
+    gap: 10px;
+}
+
+.set-points input {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* League Format */
+.league-info {
+    display: flex;
+    gap: 30px;
+    font-size: 1.3rem;
+    color: var(--accent-color);
+}
+
+.league-container {
+    display: flex;
+    flex: 1;
+    gap: 30px;
+}
+
+.standings-panel {
+    flex: 1;
+    background: var(--panel-color);
+    border: 3px solid var(--border-color);
+    padding: 30px;
+}
+
+.standings-table {
+    font-size: 1.2rem;
+}
+
+.standings-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 2px solid var(--primary-color);
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.standings-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.current-games-panel {
+    flex: 1;
+    background: var(--panel-color);
+    border: 3px solid var(--border-color);
+    padding: 30px;
+}
+
+.game-card {
+    background: var(--bg-color);
+    border: 2px solid var(--border-color);
+    padding: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.game-teams {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.league-operator-panel {
+    flex: 1;
+    background: var(--panel-color);
+    border: 3px solid var(--border-color);
+    padding: 30px;
+}
+
+.game-result-input {
+    background: var(--bg-color);
+    border: 2px solid var(--border-color);
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.game-result-teams {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.result-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.result-btn {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.result-btn.win1 {
+    background: var(--success-color);
+}
+
+.result-btn.win2 {
+    background: var(--success-color);
+}
+
+.result-btn.draw {
+    background: var(--warning-color);
+}
+
+.result-btn.selected {
+    box-shadow: 0 0 15px currentColor;
+    transform: scale(1.05);
+}
+
+/* Tournament Format */
+.tournament-container {
+    display: flex;
+    flex: 1;
+    gap: 30px;
+}
+
+.bracket {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.tournament-round {
+    background: var(--panel-color);
+    border: 3px solid var(--border-color);
+    padding: 30px;
+    min-width: 300px;
+}
+
+.tournament-round h3 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.tournament-game {
+    background: var(--bg-color);
+    border: 2px solid var(--border-color);
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.tournament-teams {
+    font-size: 1.3rem;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.tournament-operator-panel {
+    flex: 1;
+    background: var(--panel-color);
+    border: 3px solid var(--border-color);
+    padding: 30px;
+}
+
+/* Final Score Page */
+.final-results-container {
+    flex: 1;
+    display: flex;
+    gap: 30px;
+}
+
+.final-standings,
+.game-history {
+    flex: 1;
+    background: var(--panel-color);
+    border: 3px solid var(--border-color);
+    padding: 30px;
+}
+
+.final-standings h2,
+.game-history h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.final-team {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1.3rem;
+}
+
+.final-team.winner {
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.2));
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.game-result {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .header h1 {
+        font-size: 3rem;
+    }
+    
+    .teams-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .team-score {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .scoreboard-container,
+    .league-container,
+    .tournament-container,
+    .final-results-container {
+        flex-direction: column;
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .mode-selector {
+        flex-wrap: wrap;
+    }
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.team-card.updated {
+    animation: pulse 0.5s ease-in-out;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
