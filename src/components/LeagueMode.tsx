@@ -120,7 +120,7 @@ const LeagueMode: React.FC<LeagueModeProps> = ({
     const updatedMainTeams = teams.map(mainTeam => {
       const leagueTeam = updatedTeams.find(t => t.id === mainTeam.id);
       if (leagueTeam) {
-        const leaguePoints = leagueTeam.wins * 3 + leagueTeam.draws * 1;
+        const leaguePoints = leagueTeam.wins * 500 + leagueTeam.draws * 100 + leagueTeam.losses * (-50);
         return { ...mainTeam, points: mainTeam.points + leaguePoints - (calculatePoints(league.teams.find(t => t.id === mainTeam.id) || mainTeam)) };
       }
       return mainTeam;
@@ -170,7 +170,7 @@ const LeagueMode: React.FC<LeagueModeProps> = ({
   };
 
   const calculatePoints = (team: Team) => {
-    return team.wins * 3 + team.draws * 1;
+    return team.wins * 500 + team.draws * 100 + team.losses * (-50);
   };
 
   const sortedTeams = league ? [...league.teams].sort((a, b) => {

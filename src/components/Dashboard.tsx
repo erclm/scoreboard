@@ -114,31 +114,31 @@ const Dashboard: React.FC<DashboardProps> = ({ teams, onTeamsUpdate }) => {
             <div className="controls-panel" style={{ marginTop: '20px' }}>
               <button
                 className="retro-button"
-                onClick={() => updateTeamPoints(team.id, -10)}
+                onClick={() => updateTeamPoints(team.id, -25)}
                 style={{ backgroundColor: '#ff0040' }}
+              >
+                -25
+              </button>
+              <button
+                className="retro-button"
+                onClick={() => updateTeamPoints(team.id, -10)}
+                style={{ backgroundColor: '#ff4040' }}
               >
                 -10
               </button>
               <button
                 className="retro-button"
-                onClick={() => updateTeamPoints(team.id, -1)}
-                style={{ backgroundColor: '#ff4040' }}
-              >
-                -1
-              </button>
-              <button
-                className="retro-button"
-                onClick={() => updateTeamPoints(team.id, 1)}
+                onClick={() => updateTeamPoints(team.id, 10)}
                 style={{ backgroundColor: '#40ff40' }}
               >
-                +1
+                +10
               </button>
               <button
                 className="retro-button"
-                onClick={() => updateTeamPoints(team.id, 10)}
+                onClick={() => updateTeamPoints(team.id, 25)}
                 style={{ backgroundColor: '#00ff40' }}
               >
-                +10
+                +25
               </button>
             </div>
 

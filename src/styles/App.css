@@ -93,11 +93,11 @@ body {
 }
 
 .arcade-text-accent {
-  color: #1B5FD3;
+  color: #FFC107;
   font-family: 'Press Start 2P', monospace;
   text-shadow: 
-    2px 2px 0px #FFC107,
-    0 0 15px rgba(27, 95, 211, 0.8);
+    2px 2px 0px #1B5FD3,
+    0 0 15px rgba(255, 193, 7, 0.8);
 }
 
 .retro-button {
