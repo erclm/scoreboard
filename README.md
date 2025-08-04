@@ -21,6 +21,13 @@ A retro arcade-styled scoreboard webapp designed for team games, optimized for w
 - **Dynamic Standings**: Real-time updates with top 3 team highlighting
 - **Score Integration**: League points automatically sync to main dashboard
 
+### 🏅 Tournament Mode
+- **4-Team Brackets**: Single elimination tournament system
+- **Semi-Finals & Finals**: Complete bracket structure with winner progression
+- **Team Selection**: Choose any 4 teams from the 8-team roster
+- **Knockout Format**: Winner advances, loser is eliminated
+- **Match Results**: Track wins and display tournament progress
+
 ### 📊 Data Management
 - **Auto-Save**: Automatic localStorage persistence
 - **Export/Import**: JSON file support for data backup and sharing
@@ -66,7 +73,13 @@ npm run dev
    - Record wins, losses, and draws for each game
    - Monitor live standings on the right panel
 
-3. **Data Management**: 
+3. **Tournament Mode**: Ideal for knockout competitions
+   - Select 4 teams from your roster
+   - Compete in semi-finals and final matches
+   - Winner advances to next round automatically
+   - View complete tournament bracket
+
+4. **Data Management**: 
    - Scores auto-save automatically
    - Use Export to backup your data
    - Import previous sessions or share data between devices
@@ -93,9 +106,10 @@ src/
 ├── components/           # React components
 │   ├── Dashboard.tsx    # Main scoring interface
 │   ├── LeagueMode.tsx   # League management system
+│   ├── TournamentMode.tsx # Tournament bracket system
 │   └── FinalScore.tsx   # Results display
 ├── types/               # TypeScript type definitions
-│   └── index.ts        # Team, League, Game interfaces
+│   └── index.ts        # Team, League, Game, Tournament interfaces
 ├── utils/               # Utility functions
 │   └── storage.ts      # Data persistence logic
 ├── styles/              # CSS styling

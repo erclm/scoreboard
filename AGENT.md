@@ -63,6 +63,13 @@ src/
 - Real-time standings updates with top 3 highlighting
 - League points automatically sync to main dashboard scores
 
+### Tournament Mode
+- 4-team tournament bracket system
+- Semi-finals followed by final match
+- Knockout format with winner progression
+- Team selection from available 8-team roster
+- Bracket visualization with match results
+
 ### Data Management
 - Auto-save to localStorage
 - Export data to JSON file
@@ -163,12 +170,14 @@ src/
 - Optimized for offline use
 - Fast rendering with minimal re-renders
 
-### Tournament Mode
-- 4-team tournament bracket system
-- Semi-finals followed by final match
-- Knockout format with winner progression
-- Team selection from available 8-team roster
-- Bracket visualization with match results
+## Game Logic
+
+### Tournament Scoring
+- **Knockout Format**: Winner advances, loser is eliminated
+- **Semi-Finals**: 2 games determine final participants
+- **Final Match**: Championship game between semi-final winners
+- **Bracket Progression**: Automatic advancement of winners
+- **Team Selection**: Choose any 4 teams from roster for bracket
 
 ## Future Enhancements
 - Audio feedback for score changes
