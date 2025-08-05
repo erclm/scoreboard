@@ -100,7 +100,7 @@ const Dashboard: React.FC<DashboardProps> = ({ teams, onTeamsUpdate }) => {
               <h3
                 className="team-name arcade-text-bright"
                 onClick={() => startEditingName(team)}
-                style={{ cursor: 'pointer', marginBottom: '15px', fontSize: '18px' }}
+                style={{ cursor: 'pointer', marginBottom: '15px', fontSize: '24px' }}
                 title="Click to edit team name"
               >
                 {team.name}
@@ -115,28 +115,28 @@ const Dashboard: React.FC<DashboardProps> = ({ teams, onTeamsUpdate }) => {
               <button
                 className="retro-button"
                 onClick={() => updateTeamPoints(team.id, -25)}
-                style={{ backgroundColor: '#ff0040' }}
+                style={{ backgroundColor: '#ff0040', padding: '8px 12px', fontSize: '14px' }}
               >
                 -25
               </button>
               <button
                 className="retro-button"
                 onClick={() => updateTeamPoints(team.id, -10)}
-                style={{ backgroundColor: '#ff4040' }}
+                style={{ backgroundColor: '#ff4040', padding: '8px 12px', fontSize: '14px' }}
               >
                 -10
               </button>
               <button
                 className="retro-button"
                 onClick={() => updateTeamPoints(team.id, 10)}
-                style={{ backgroundColor: '#40ff40' }}
+                style={{ backgroundColor: '#40ff40', padding: '8px 12px', fontSize: '14px' }}
               >
                 +10
               </button>
               <button
                 className="retro-button"
                 onClick={() => updateTeamPoints(team.id, 25)}
-                style={{ backgroundColor: '#00ff40' }}
+                style={{ backgroundColor: '#00ff40', padding: '8px 12px', fontSize: '14px' }}
               >
                 +25
               </button>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { AppState, GameMode, Team, League } from './types';
-import { saveData, loadData, exportData, importData } from './utils/storage';
+import { saveData, loadData, exportData, importData, checkStorageHealth } from './utils/storage';
 import Dashboard from './components/Dashboard';
 import LeagueMode from './components/LeagueMode';
 
@@ -23,9 +23,16 @@ const initialState: AppState = {
 function App() {
   const [appState, setAppState] = useState<AppState>(initialState);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [saveStatus, setSaveStatus] = useState<'saved' | 'saving' | 'error'>('saved');
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check storage health on startup
+    const healthCheck = checkStorageHealth();
+    if (!healthCheck.available) {
+      alert('⚠️ Storage not available! Data won\'t persist. Try enabling cookies/storage or disable incognito mode.');
+    }
+    
     const savedData = loadData();
     if (savedData) {
       setAppState(savedData);
@@ -33,7 +40,13 @@ function App() {
   }, []);
 
   useEffect(() => {
-    saveData(appState);
+    setSaveStatus('saving');
+    const success = saveData(appState);
+    setSaveStatus(success ? 'saved' : 'error');
+    
+    if (!success) {
+      console.error('⚠️ Auto-save failed! Consider exporting your data.');
+    }
   }, [appState]);
 
   useEffect(() => {
@@ -120,9 +133,20 @@ function App() {
               </div>
             )}
           </div>
-          <h1 className="arcade-text" style={{ textAlign: 'center', fontSize: '56px', marginBottom: '20px', letterSpacing: '4px' }}>
-            ⭐ SCOREBOARD ⭐
-          </h1>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px' }}>
+            <h1 className="arcade-text" style={{ fontSize: '56px', marginBottom: '20px', letterSpacing: '4px' }}>
+              ⭐ SCOREBOARD ⭐
+            </h1>
+            <div className="save-status" style={{ 
+              fontSize: '14px', 
+              padding: '4px 8px', 
+              borderRadius: '4px',
+              backgroundColor: saveStatus === 'saved' ? '#00ff80' : saveStatus === 'saving' ? '#ffaa00' : '#ff4040',
+              color: '#000'
+            }}>
+              {saveStatus === 'saved' ? '✅ Saved' : saveStatus === 'saving' ? '💾 Saving...' : '❌ Save Failed'}
+            </div>
+          </div>
         </div>
         
         <div className="mode-selector">
