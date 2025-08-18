@@ -3,7 +3,7 @@ import { AppState, GameMode, Team, League } from './types';
 import { saveData, loadData, exportData, importData, checkStorageHealth } from './utils/storage';
 import Dashboard from './components/Dashboard';
 import LeagueMode from './components/LeagueMode';
-
+import ManualStats from './components/ManualStats';
 import FinalScore from './components/FinalScore';
 
 const initialTeams: Team[] = Array.from({ length: 8 }, (_, i) => ({
@@ -162,7 +162,12 @@ function App() {
           >
             League
           </button>
-
+          <button
+            className={`retro-button mode-button ${appState.gameMode === 'manual-stats' ? 'active' : ''}`}
+            onClick={() => handleModeChange('manual-stats')}
+          >
+            Manual Stats
+          </button>
           <button
             className={`retro-button mode-button ${appState.gameMode === 'final' ? 'active' : ''}`}
             onClick={() => handleModeChange('final')}
@@ -187,7 +192,12 @@ function App() {
           />
         )}
 
-
+        {appState.gameMode === 'manual-stats' && (
+          <ManualStats
+            teams={appState.teams}
+            onTeamsUpdate={handleTeamsUpdate}
+          />
+        )}
 
         {appState.gameMode === 'final' && (
           <FinalScore

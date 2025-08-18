@@ -40,7 +40,7 @@ export interface Tournament {
   completed: boolean;
 }
 
-export type GameMode = 'dashboard' | 'league' | 'tournament' | 'final';
+export type GameMode = 'dashboard' | 'league' | 'tournament' | 'final' | 'manual-stats';
 
 export interface AppState {
   gameMode: GameMode;
